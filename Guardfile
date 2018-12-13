@@ -1,0 +1,69 @@
+# frozen_string_literal: true
+
+directories(%w[app lib config spec].select { |d| Dir.exist?(d) ? d : UI.warning(format('Directory %<dir>s does not exist', dir: d)) })
+ignore %r{^lib/templates/}
+
+guard 'brakeman', run_on_start: true do
+  watch(%r{^app/.+.(erb|haml|rhtml|rb)$})
+  watch(%r{^config/.+.rb$})
+  watch(%r{^lib/.+.rb$})
+  watch('Gemfile')
+end
+
+guard 'fasterer' do
+  watch(%r{^app/.*.rb})
+end
+
+guard :foreman, procfile: 'Procfile.dev' do
+  watch(%r{^app/(controllers|models|helpers)/.+.rb$})
+  watch(%r{^lib/.+.rb$})
+  watch(%r{^config/*})
+end
+
+guard :rspec, cmd: 'bin/rspec' do
+  require 'guard/rspec/dsl'
+  dsl = Guard::RSpec::Dsl.new(self)
+
+  # RSpec files
+  rspec = dsl.rspec
+  watch(rspec.spec_helper) { rspec.spec_dir }
+  watch(rspec.spec_support) { rspec.spec_dir }
+  watch(rspec.spec_files)
+
+  # Ruby files
+  ruby = dsl.ruby
+  dsl.watch_spec_files_for(ruby.lib_files)
+
+  # Rails files
+  rails = dsl.rails(view_extensions: %w[erb haml slim])
+  dsl.watch_spec_files_for(rails.app_files)
+  dsl.watch_spec_files_for(rails.views)
+
+  watch(rails.controllers) do |controller|
+    [
+      rspec.spec.call(format('routing/%<controller>s_routing', controller: controller[1])),
+      rspec.spec.call(format('controllers/%<controller>s_controller', controller: controller[1])),
+      rspec.spec.call(format('acceptance/%<controller>s', controller: controller[1]))
+    ]
+  end
+
+  # Rails config changes
+  watch(rails.spec_helper)     { rspec.spec_dir }
+  watch(rails.routes)          { format('%<controller>s/routing', controller: rspec.spec_dir) }
+  watch(rails.app_controller)  { format('%<controller>s/controllers', controller: rspec.spec_dir) }
+
+  # Capybara features specs
+  watch(rails.view_dirs)     { |view| rspec.spec.call(format('features/%<view>', view: view[1])) }
+  watch(rails.layouts)       { |layout| rspec.spec.call(format('features/%<layout>s', layout: layout[1])) }
+
+  # Turnip features and steps
+  watch(%r{^spec/acceptance/(.+).feature$})
+  watch(%r{^spec/acceptance/steps/(.+)_steps.rb$}) do |model|
+    Dir[File.join(format('**/%<model>s.feature', model: model[1]))][0] || 'spec/acceptance'
+  end
+end
+
+guard :rubocop, cli: ['--rails', '--format', 'fuubar', '--display-cop-names', '--auto-correct'] do
+  watch(/.+.rb$/)
+  watch(%r{(?:.+/)?.rubocop(?:_todo)?.yml$}) { |m| File.dirname(m[0]) }
+end

@@ -1,0 +1,4 @@
+web:          bundle exec puma -C config/puma.rb -b 'ssl://127.0.0.1:3000?key=./ssl/server.key&cert=./ssl/server.crt'
+db:           postgres -D /usr/local/var/postgres
+redis:        redis-server /usr/local/etc/redis.conf
+# mailcatcher:  bundle exec subcontract -- mailcatcher --foreground
