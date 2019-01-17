@@ -29,15 +29,15 @@
 
 FactoryBot.define do
   factory :league do
-    football_association { nil }
+    association :football_association
     name { 'MyString' }
     level { 1 }
     relegation { false }
     description { 'MyString' }
-    day { 'MyString' }
-    format { 'MyString' }
-    skill_level { 'MyString' }
-    age_restriction { 'MyString' }
-    gender_restriction { 'MyString' }
+    day { 'Sunday' }
+    format { %w[11v11 7v7].sample }
+    skill_level { 'Intermediate' }
+    age_restriction { 'None' }
+    gender_restriction { 'Mens' }
   end
 end

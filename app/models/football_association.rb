@@ -15,4 +15,5 @@
 # Besides creating one when initializing the app, you should never have to deal with this
 class FootballAssociation < ApplicationRecord
   has_many :clubs, dependent: :nullify
+  has_many :leagues, dependent: :nullify
 end

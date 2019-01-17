@@ -18,5 +18,6 @@
 FactoryBot.define do
   factory :club do
     name { Faker::Football.team }
+    association :football_association
   end
 end

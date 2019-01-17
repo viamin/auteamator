@@ -44,6 +44,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    after_commit_action (1.1.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     annotate (2.7.4)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
@@ -74,6 +77,10 @@ GEM
     coderay (1.1.2)
     colorize (0.8.1)
     concurrent-ruby (1.1.4)
+    counter_culture (2.1.2)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      after_commit_action (~> 1.0)
     crass (1.0.4)
     database_cleaner (1.7.0)
     database_consistency (0.5.0)
@@ -138,6 +145,9 @@ GEM
     guard-foreman (0.0.4)
       guard (~> 2.6)
       spoon (~> 0.0, >= 0.0.4)
+    guard-rails (0.8.1)
+      guard (~> 2.11)
+      guard-compat (~> 1.0)
     guard-rspec (4.7.3)
       guard (~> 2.1)
       guard-compat (~> 1.1)
@@ -345,6 +355,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  counter_culture
   database_cleaner
   database_consistency
   devise
@@ -357,6 +368,7 @@ DEPENDENCIES
   guard-brakeman
   guard-fasterer
   guard-foreman
+  guard-rails
   guard-rspec
   guard-rubocop
   jbuilder (~> 2.5)

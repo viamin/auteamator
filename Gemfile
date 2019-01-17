@@ -54,6 +54,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+gem 'counter_culture'
 gem 'devise'
 gem 'devise-jwt'
 gem 'pundit'
@@ -70,6 +71,7 @@ group :development, :test do
   gem 'guard-brakeman'
   gem 'guard-fasterer'
   gem 'guard-foreman'
+  gem 'guard-rails'
   gem 'guard-rspec'
   gem 'guard-rubocop'
   gem 'rails_logtruncate'

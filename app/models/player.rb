@@ -23,6 +23,7 @@
 # Just what you think. They play the sportball matches.
 class Player < ApplicationRecord
   belongs_to :club, optional: true
+  belongs_to :team, optional: true
 
   def name
     "#{first_name} #{last_name}"

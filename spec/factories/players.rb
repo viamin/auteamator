@@ -25,7 +25,7 @@ FactoryBot.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     mobile_number { Faker::PhoneNumber.cell_phone }
-    positions { ['Goalkeeper', 'Center Defender', 'Outside Defender', 'Center Midfielder', 'Outside Midfielder', 'Striker'].sample }
-    club { '' }
+    positions { ['Goalkeeper', 'Center Defender', 'Outside Defender', 'Center Midfielder', 'Outside Midfielder', 'Striker'].sample } # rubocop:disable Metrics/LineLength
+    association :club
   end
 end

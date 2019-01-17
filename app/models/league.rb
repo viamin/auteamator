@@ -32,4 +32,5 @@
 # games that are a part of it
 class League < ApplicationRecord
   belongs_to :football_association
+  has_many :seasons, dependent: :destroy
 end
