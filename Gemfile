@@ -62,6 +62,7 @@ gem 'strong_migrations'
 group :development, :test do
   gem 'annotate'
   gem 'database_cleaner'
+  gem 'database_consistency', require: false
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'fuubar'
@@ -72,6 +73,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-rubocop'
   gem 'rails_logtruncate'
+  gem 'rb-readline'
   gem 'rspec-rails'
   gem 'rubocop-rspec'
   gem 'terminal-notifier'

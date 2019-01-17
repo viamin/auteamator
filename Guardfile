@@ -20,7 +20,7 @@ guard :foreman, procfile: 'Procfile.dev' do
   watch(%r{^config/*})
 end
 
-guard :rspec, cmd: 'bin/rspec' do
+guard :rspec, cmd: 'bundle exec rspec' do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
 

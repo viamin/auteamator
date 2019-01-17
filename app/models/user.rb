@@ -19,6 +19,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
+# Devise user model - how users of the app will log in
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
