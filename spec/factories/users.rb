@@ -27,5 +27,11 @@ FactoryBot.define do
     trait :with_confirmation do
       password_confirmation { password }
     end
+
+    trait :as_admin do
+      after(:create) do |user, _evaluator|
+        user.add_role(:admin)
+      end
+    end
   end
 end

@@ -22,5 +22,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { create(:user) }
+  let(:admin_user) { create(:user, :as_admin) }
+
+  context 'when creating' do
+    it 'creates a normal user' do
+      expect(user.has_role?(:admin)).to be false
+    end
+
+    it 'creates an admin' do
+      expect(admin_user.has_role?(:admin)).to be true
+    end
+  end
 end

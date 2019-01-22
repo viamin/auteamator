@@ -48,4 +48,10 @@ class ApplicationPolicy
       scope.all
     end
   end
+
+  private
+
+  def admin?
+    user.has_role? :admin
+  end
 end
