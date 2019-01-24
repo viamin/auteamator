@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title Auteamator
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  body
+    nav.navbar
+      .navbar-brand
+        a.navbar-item href='/' AuTEAMator
+      .navbar-end
+        .navbar-item
+          .buttons
+            a.button.is-primary href=new_user_registration_path
+              strong Sign up
+            a.button.is-light href=new_user_session_path
+              | Log in
+    section.section
+      = yield
+    = render partial: 'layouts/footer'

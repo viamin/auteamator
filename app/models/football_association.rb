@@ -12,7 +12,9 @@
 
 # The top level container for everything (except maybe a confederation, which is
 # not currently in the scope of Auteamator)
-# Besides creating one when initializing the app, you should never have to deal with this
+# Allows a user to track teams/games in multiple organizations
+# For example, if I play on teams in Sports4Good and also IPlayFor,
+# those are the associations
 class FootballAssociation < ApplicationRecord
   has_many :clubs, dependent: :nullify
   has_many :leagues, dependent: :nullify

@@ -17,6 +17,8 @@
 
 # A Club is the player organization
 class Club < ApplicationRecord
+  resourcify
+
   belongs_to :football_association
   has_many :players, dependent: :nullify
 end

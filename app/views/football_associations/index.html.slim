@@ -1,0 +1,21 @@
+p id="notice"
+  = notice
+
+h1.title.is-1 Football Associations
+
+table.table
+  thead
+    tr
+      th colspan="4"
+
+  tbody
+    - @football_associations.each do |football_association|
+      tr
+        td = football_association.name
+        td = link_to 'Show', football_association
+        td = link_to 'Edit', edit_football_association_path(football_association)
+        td = link_to 'Destroy', football_association, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+
+= link_to 'New Football Association', new_football_association_path
