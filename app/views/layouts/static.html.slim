@@ -9,16 +9,7 @@ html
     = javascript_include_tag 'application'
 
   body
-    nav.navbar
-      .navbar-brand
-        a.navbar-item href='/' AuTEAMator
-      .navbar-end
-        .navbar-item
-          .buttons
-            a.button.is-primary href=new_user_registration_path
-              strong Sign up
-            a.button.is-light href=new_user_session_path
-              | Log in
+    = render partial: 'layouts/menu'
     section.section
       = yield
     = render partial: 'layouts/footer'

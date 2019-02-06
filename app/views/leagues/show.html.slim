@@ -1,0 +1,17 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @league.name
+
+p
+  strong Level:
+  = @league.level
+
+p
+  strong Relegation:
+  = @league.relegation
+
+= link_to 'Edit', edit_league_path(@league)
+' |
+= link_to 'Back', football_association_leagues_path(@football_association)

@@ -1,0 +1,26 @@
+= simple_form_for @football_association do |fa|
+  = fa.input :name
+  = fa.button :submit
+
+/ <%= form_with(model: football_association, local: true) do |form| %>
+/   <% if football_association.errors.any? %>
+/     <div id="error_explanation">
+/       <h2><%= pluralize(football_association.errors.count, "error") %> prohibited this football_association from being saved:</h2>
+
+/       <ul>
+/       <% football_association.errors.full_messages.each do |message| %>
+/         <li><%= message %></li>
+/       <% end %>
+/       </ul>
+/     </div>
+/   <% end %>
+
+/   <div class="field">
+/     <%= form.label :name %>
+/     <%= form.text_field :name %>
+/   </div>
+
+/   <div class="actions">
+/     <%= form.submit %>
+/   </div>
+/ <% end %>

@@ -1,0 +1,13 @@
+nav.navbar
+  .navbar-brand
+    a.navbar-item href='/' AuTEAMator
+  .navbar-end
+    .navbar-item
+      .buttons
+        - if current_user.blank?
+          a.button.is-primary href=new_user_registration_path
+            strong Sign up
+          a.button.is-light href=new_user_session_path Log in
+        - else
+          = button_to 'Log out', destroy_user_session_path, method: :delete, class: 'button is-light'
+          / a.button.is-light href=destroy_user_session_path method='delete' Log out

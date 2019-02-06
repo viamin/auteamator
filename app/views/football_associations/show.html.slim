@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @football_association.name
+
+p
+  strong Leagues:
+  = link_to 'Show Leagues', football_association_leagues_path(@football_association)
+
+p
+  strong Clubs:
+  = link_to 'Show Clubs', football_association_clubs_path(@football_association)
+
+= link_to 'Edit', edit_football_association_path(@football_association)
+'
+' |
+= link_to 'Back', football_associations_path

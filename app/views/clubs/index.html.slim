@@ -1,0 +1,23 @@
+p#notice = notice
+
+h1.title.is-1 Clubs
+
+table
+  thead
+    tr
+      th Name
+      th colspan="3"
+
+  tbody
+    - @clubs.each do |club|
+      tr
+        td = club.name
+        td = link_to 'Show', club
+        td = link_to 'Edit', edit_club_path(club)
+        td = link_to 'Destroy', club, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+
+= link_to 'New Club', new_football_association_club_path(@football_association)
+' |
+= link_to 'Back to FA', football_association_path(@football_association)

@@ -9,9 +9,7 @@ html
     = javascript_include_tag 'application'
 
   body
-    nav.navbar
-      .navbar-brand
-        a.navbar-item href='/' AuTEAMator
+    = render partial: 'layouts/menu'
     section.section
       = yield
     = render partial: 'layouts/footer'
