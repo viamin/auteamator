@@ -1,6 +1,12 @@
 = simple_form_for @football_association do |fa|
   = fa.simple_fields_for :leagues do |l|
     = l.input :name
-    = l.input :level
+    = l.input :day, collection: I18n.t('collections.day').invert
+    = l.input :format, collection: I18n.t('collections.format').invert
+    = l.input :gender_restriction, collection: I18n.t('collections.gender_restriction').invert
+    = l.input :skill_level, collection: I18n.t('collections.skill_level').invert
+    = l.input :description
+    = l.input :age_restriction
     = l.input :relegation, as: :boolean, inline_label: "Relegates teams at end of season"
+    = l.input :level
     = l.button :submit

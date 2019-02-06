@@ -30,4 +30,45 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  club:
+    name: "Name"
+  football_association:
+    name: "Name"
+  league:
+    name: "Name"
+    age_restriction: "Age restriction"
+    day: "Day of week"
+    description: "Description"
+    format: "Format"
+    gender_restriction: "Gender"
+    level: "Relegation level"
+    relegation: "Relegation"
+    skill_level: "Skill level"
+  collections:
+    day:
+      sunday: "Sunday"
+      monday: "Monday"
+      tuesday: "Tuesday"
+      wednesday: "Wednesday"
+      thursday: "Thursday"
+      friday: "Friday"
+      saturday: "Saturday"
+    format:
+      4v4: "4 v 4"
+      6v6: "6 v 6"
+      7v7: "7 v 7"
+      8v8: "8 v 8"
+      11v11: "11 v 11"
+    gender_restriction:
+      any: "Any"
+      mens: "Mens"
+      womens: "Womens"
+      coed: "Coed"
+    skill_level:
+      any: "Any"
+      beginner: "Beginner"
+      lower_intermediate: "Lower intermediate"
+      intermediate: "Intermediate"
+      upper_intermediate: "Upper intermediate"
+      advanced: "Advanced"
+      recreational: "Recreational"

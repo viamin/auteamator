@@ -57,7 +57,7 @@ class LeaguesController < ApplicationController
   def destroy
     @league.destroy
     respond_to do |format|
-      format.html { redirect_to leagues_url, notice: 'League was successfully destroyed.' }
+      format.html { redirect_to football_association_leagues_url(@football_association), notice: 'League was successfully destroyed.' } # rubocop:disable Metrics/LineLength
       format.json { head :no_content }
     end
   end

@@ -1,16 +1,11 @@
 p#notice = notice
 
-p
-  strong Name:
-  = @league.name
-
-p
-  strong Level:
-  = @league.level
-
-p
-  strong Relegation:
-  = @league.relegation
+- %i[name day format gender_restriction skill_level description age_restriction relegation level].each do |column|
+  p
+    strong
+      = t("league.#{column}")
+      ' :
+    = @league.translated_value(column)
 
 = link_to 'Edit', edit_league_path(@league)
 '

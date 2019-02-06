@@ -8,8 +8,6 @@ class FootballAssociationsController < ApplicationController
   # GET /football_associations.json
   def index
     @football_associations = policy_scope(FootballAssociation)
-
-    redirect_to action: 'show', id: @football_associations.first if @football_associations.size == 1
   end
 
   # GET /football_associations/1

@@ -2,11 +2,15 @@ p#notice = notice
 
 h1 Leagues
 
-table
+table.table
   thead
     tr
       th Name
-      th Level
+      th Day
+      th Format
+      th Gender
+      th Skill
+      th Ages
       th Relegation
       th colspan="3"
 
@@ -14,7 +18,11 @@ table
     - @leagues.each do |league|
       tr
         td = league.name
-        td = league.level
+        td = t("collections.day.#{league.day}")
+        td = t("collections.format.#{league.format}")
+        td = t("collections.gender_restriction.#{league.gender_restriction}")
+        td = t("collections.skill_level.#{league.skill_level}")
+        td = league.age_restriction
         td = league.relegation
         td = link_to 'Show', league
         td = link_to 'Edit', edit_league_path(league)

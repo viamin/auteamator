@@ -33,4 +33,10 @@
 class League < ApplicationRecord
   belongs_to :football_association
   has_many :seasons, dependent: :destroy
+
+  private
+
+  def collection_columns
+    %i[day format gender_restriction skill_level]
+  end
 end

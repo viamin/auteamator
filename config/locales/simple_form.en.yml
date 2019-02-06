@@ -33,4 +33,11 @@ en:
     placeholders:
       leagues:
         name: "League name"
-        level: "Level"
+        age_restriction: "Age restriction"
+        day: "Day of week"
+        description: "Description"
+        format: "Format"
+        gender_restriction: "Gender"
+        level: "Relegation level"
+        relegation: "Relegation"
+        skill_level: "Skill level"
