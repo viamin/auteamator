@@ -37,6 +37,9 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  config.force_ssl = true
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
