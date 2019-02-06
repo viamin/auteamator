@@ -2,11 +2,12 @@
 
 class LeaguesController < ApplicationController
   before_action :set_league, only: %i[show edit update destroy]
+  before_action :set_football_association, only: %i[index new create]
 
   # GET /leagues
   # GET /leagues.json
   def index
-    @leagues = League.all
+    @leagues = policy_scope(League)
   end
 
   # GET /leagues/1
@@ -15,7 +16,7 @@ class LeaguesController < ApplicationController
 
   # GET /leagues/new
   def new
-    @league = League.new
+    @league = @football_association.leagues.build
   end
 
   # GET /leagues/1/edit
@@ -24,7 +25,7 @@ class LeaguesController < ApplicationController
   # POST /leagues
   # POST /leagues.json
   def create
-    @league = League.new(league_params)
+    @league = @football_association.leagues.build(league_params)
 
     respond_to do |format|
       if @league.save
@@ -66,6 +67,14 @@ class LeaguesController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_league
     @league = League.find(params[:id])
+    authorize @league
+    @football_association = @league.football_association
+    authorize @football_association
+  end
+
+  def set_football_association
+    @football_association = FootballAssociation.find(params[:football_association_id])
+    authorize @football_association
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

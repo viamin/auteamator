@@ -18,4 +18,6 @@
 class FootballAssociation < ApplicationRecord
   has_many :clubs, dependent: :nullify
   has_many :leagues, dependent: :nullify
+  accepts_nested_attributes_for :clubs, allow_destroy: true
+  accepts_nested_attributes_for :leagues, allow_destroy: true
 end

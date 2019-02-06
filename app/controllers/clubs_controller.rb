@@ -2,12 +2,13 @@
 
 class ClubsController < ApplicationController
   before_action :set_club, only: %i[show edit update destroy]
+  before_action :set_football_association, only: %i[index new create]
 
   # GET /clubs
   # GET /clubs.json
   def index
     @clubs = policy_scope(Club)
-    redirect_to if @clubs.blank?
+    # redirect_to if @clubs.blank?
   end
 
   # GET /clubs/1
@@ -16,7 +17,7 @@ class ClubsController < ApplicationController
 
   # GET /clubs/new
   def new
-    @club = Club.new
+    @club = @football_association.clubs.build
   end
 
   # GET /clubs/1/edit
@@ -57,7 +58,7 @@ class ClubsController < ApplicationController
   def destroy
     @club.destroy
     respond_to do |format|
-      format.html { redirect_to clubs_url, notice: 'Club was successfully destroyed.' }
+      format.html { redirect_to football_association_clubs_url(@football_association), notice: 'Club was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,6 +68,14 @@ class ClubsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_club
     @club = Club.find(params[:id])
+    authorize @club
+    @football_association = @club.football_association
+    authorize @football_association
+  end
+
+  def set_football_association
+    @football_association = FootballAssociation.find(params[:football_association_id])
+    authorize @football_association
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

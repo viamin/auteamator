@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Disabling Pundit filters
 class Users::SessionsController < Devise::SessionsController
   layout 'devise'
   skip_after_action :verify_authorized

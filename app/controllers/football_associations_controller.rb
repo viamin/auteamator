@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/LineLength
 class FootballAssociationsController < ApplicationController
   before_action :set_football_association, only: %i[show edit update destroy]
 
@@ -29,7 +30,7 @@ class FootballAssociationsController < ApplicationController
 
   # POST /football_associations
   # POST /football_associations.json
-  def create
+  def create # rubocop:disable Metrics/MethodLength
     @football_association = FootballAssociation.new(football_association_params)
     authorize @football_association
 
@@ -81,3 +82,4 @@ class FootballAssociationsController < ApplicationController
     params.require(:football_association).permit(policy(FootballAssociation).permitted_attributes)
   end
 end
+# rubocop:enable Metrics/LineLength
