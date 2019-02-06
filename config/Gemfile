@@ -39,14 +39,13 @@ gem 'devise-jwt'
 gem 'high_voltage'
 gem 'pundit'
 gem 'rolify'
+gem 'simple_form'
 gem 'slim-rails'
 gem 'strong_migrations'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'annotate'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'database_cleaner'
   gem 'database_consistency', require: false
   gem 'factory_bot_rails'
   gem 'faker'
@@ -68,22 +67,18 @@ group :development, :test do
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'web-console', '>= 3.3.0'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'foreman'
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rails_dev_ssl'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'pundit-matchers'
+  gem 'selenium-webdriver'
   gem 'simplecov'
 end
