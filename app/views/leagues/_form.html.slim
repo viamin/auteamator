@@ -4,35 +4,3 @@
     = l.input :level
     = l.input :relegation, as: :boolean, inline_label: "Relegates teams at end of season"
     = l.button :submit
-
-/ = form_with(model: [@football_association, league], local: true) do |form|
-/   - if league.errors.any?
-/     #error_explanation
-/       h2
-/         = pluralize(league.errors.count, "error")
-/         '
-/         | prohibited this league from being saved:
-
-/       ul
-/       - league.errors.full_messages.each do |message|
-/         li = message
-
-/   .field
-/     = form.label :name, 'Name', class: 'label'
-/     .control
-/       = form.text_field :name, class: 'input'
-
-/   .field
-/     = form.label :level, 'Level', class: 'label'
-/     .control
-/       = form.number_field :level, class: 'input'
-
-/   .field
-/     .control
-/       = form.label :relegation, 'Relegation', class: 'checkbox'
-/       = form.check_box :relegation
-
-/   .actions
-/     .control
-/       = form.submit nil, class: 'button'
-
