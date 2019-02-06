@@ -12,6 +12,7 @@ Metrics/LineLength:
     - Gemfile
     - Guardfile
     - Rakefile
+    - app/views/**/*.jbuilder
     - config/environments/*
     - config/initializers/*
     - config/routes.rb
@@ -26,6 +27,9 @@ Rails/TimeZone:
   EnforcedStyle: strict
 Rails/Date:
   EnforcedStyle: strict
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - app/models/role.rb
 Style/BlockComments:
   Exclude:
     - spec/spec_helper.rb
