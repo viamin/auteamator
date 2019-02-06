@@ -2,7 +2,11 @@
 
 class FootballAssociationPolicy < ApplicationPolicy
   def permitted_attributes
-    [:name, clubs_attributes: [:name], leagues_attributes: %i[day description format gender_restriction level name relegation skill_level]]
+    if admin?
+      [:name, clubs_attributes: [:name], leagues_attributes: %i[day description format gender_restriction level name relegation skill_level]] # rubocop:disable Metrics/LineLength
+    else
+      []
+    end
   end
 
   def show?
