@@ -2,7 +2,7 @@
 
 class FootballAssociationPolicy < ApplicationPolicy
   def permitted_attributes
-    [:name]
+    [:name, clubs_attributes: [:name], leagues_attributes: %i[day description format gender_restriction level name relegation skill_level]]
   end
 
   def show?
