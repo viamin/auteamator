@@ -53,7 +53,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
   watch(rails.app_controller)  { format('%<controller>s/controllers', controller: rspec.spec_dir) }
 
   # Capybara features specs
-  watch(rails.view_dirs)     { |view| rspec.spec.call(format('features/%<view>', view: view[1])) }
+  watch(rails.view_dirs)     { |view| rspec.spec.call(format('features/%<view>s', view: view[1])) }
   watch(rails.layouts)       { |layout| rspec.spec.call(format('features/%<layout>s', layout: layout[1])) }
 
   # Turnip features and steps

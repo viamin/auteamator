@@ -83,8 +83,7 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'chromedriver-helper'
   gem 'pundit-matchers'
-  gem 'selenium-webdriver'
   gem 'simplecov'
+  gem 'webdrivers', require: false
 end
