@@ -63,7 +63,7 @@ guard :rspec, cmd: 'bundle exec rspec' do
   end
 end
 
-guard :rubocop, cli: ['--rails', '--format', 'fuubar', '--display-cop-names', '--auto-correct'] do
+guard :rubocop, cli: ['--format', 'fuubar', '--display-cop-names', '--auto-correct'] do
   watch(/.+.rb$/)
   watch(%r{(?:.+/)?.rubocop(?:_todo)?.yml$}) { |m| File.dirname(m[0]) }
 end
