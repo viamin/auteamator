@@ -19,5 +19,15 @@ FactoryBot.define do
   factory :club do
     name { Faker::Sports::Football.team }
     association :football_association
+
+    trait :with_players do
+      transient do
+        player_count { 24 }
+      end
+
+      after(:create) do |team, evaluator|
+        create_list(:player, evaluator.player_count, team: team)
+      end
+    end
   end
 end

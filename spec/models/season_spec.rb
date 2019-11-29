@@ -8,6 +8,7 @@
 #  ends       :datetime
 #  starts     :datetime
 #  title      :string
+#  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  league_id  :bigint(8)

@@ -24,6 +24,8 @@ require 'rails_helper'
 RSpec.describe Player, type: :model do
   let(:player) { build(:player) }
 
+  it { is_expected.to validate_presence_of(:first_name) }
+
   it 'returns full name' do
     expect(player.name).to eq(player.first_name + ' ' + player.last_name)
   end

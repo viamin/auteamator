@@ -27,6 +27,38 @@
 #                                 PATCH  /football_associations/:id(.:format)                                                     football_associations#update
 #                                 PUT    /football_associations/:id(.:format)                                                     football_associations#update
 #                                 DELETE /football_associations/:id(.:format)                                                     football_associations#destroy
+#                      club_teams GET    /clubs/:club_id/teams(.:format)                                                          teams#index
+#                                 POST   /clubs/:club_id/teams(.:format)                                                          teams#create
+#                   new_club_team GET    /clubs/:club_id/teams/new(.:format)                                                      teams#new
+#                       edit_team GET    /teams/:id/edit(.:format)                                                                teams#edit
+#                            team GET    /teams/:id(.:format)                                                                     teams#show
+#                                 PATCH  /teams/:id(.:format)                                                                     teams#update
+#                                 PUT    /teams/:id(.:format)                                                                     teams#update
+#                                 DELETE /teams/:id(.:format)                                                                     teams#destroy
+#                           clubs GET    /clubs(.:format)                                                                         clubs#index
+#                                 POST   /clubs(.:format)                                                                         clubs#create
+#                        new_club GET    /clubs/new(.:format)                                                                     clubs#new
+#                                 GET    /clubs/:id/edit(.:format)                                                                clubs#edit
+#                                 GET    /clubs/:id(.:format)                                                                     clubs#show
+#                                 PATCH  /clubs/:id(.:format)                                                                     clubs#update
+#                                 PUT    /clubs/:id(.:format)                                                                     clubs#update
+#                                 DELETE /clubs/:id(.:format)                                                                     clubs#destroy
+#                    league_teams GET    /leagues/:league_id/teams(.:format)                                                      teams#index
+#                                 POST   /leagues/:league_id/teams(.:format)                                                      teams#create
+#                 new_league_team GET    /leagues/:league_id/teams/new(.:format)                                                  teams#new
+#                                 GET    /teams/:id/edit(.:format)                                                                teams#edit
+#                                 GET    /teams/:id(.:format)                                                                     teams#show
+#                                 PATCH  /teams/:id(.:format)                                                                     teams#update
+#                                 PUT    /teams/:id(.:format)                                                                     teams#update
+#                                 DELETE /teams/:id(.:format)                                                                     teams#destroy
+#                         leagues GET    /leagues(.:format)                                                                       leagues#index
+#                                 POST   /leagues(.:format)                                                                       leagues#create
+#                      new_league GET    /leagues/new(.:format)                                                                   leagues#new
+#                                 GET    /leagues/:id/edit(.:format)                                                              leagues#edit
+#                                 GET    /leagues/:id(.:format)                                                                   leagues#show
+#                                 PATCH  /leagues/:id(.:format)                                                                   leagues#update
+#                                 PUT    /leagues/:id(.:format)                                                                   leagues#update
+#                                 DELETE /leagues/:id(.:format)                                                                   leagues#destroy
 #                new_user_session GET    /users/sign_in(.:format)                                                                 users/sessions#new
 #                    user_session POST   /users/sign_in(.:format)                                                                 users/sessions#create
 #            destroy_user_session DELETE /users/sign_out(.:format)                                                                users/sessions#destroy
@@ -54,6 +86,12 @@ Rails.application.routes.draw do
   resources :football_associations, shallow: true do
     resources :clubs
     resources :leagues
+  end
+  resources :clubs, shallow: true do
+    resources :teams
+  end
+  resources :leagues, shallow: true do
+    resources :teams
   end
   devise_for :users, controllers: {
     registrations: 'users/registrations',

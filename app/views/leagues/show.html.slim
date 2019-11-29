@@ -6,6 +6,7 @@ p#notice = notice
       = t("league.#{column}")
       ' :
     = @league.translated_value(column)
+p = link_to 'Show Teams', league_teams_path(@league)
 
 = link_to 'Edit', edit_league_path(@league)
 '

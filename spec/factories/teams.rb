@@ -6,6 +6,7 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  name       :string
+#  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  club_id    :bigint(8)
@@ -27,5 +28,6 @@ FactoryBot.define do
     association :club
     association :league
     name { 'First Team' }
+    url { Faker::Internet.url }
   end
 end
