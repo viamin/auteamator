@@ -6,6 +6,7 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  name       :string
+#  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  club_id    :bigint(8)
@@ -26,8 +27,10 @@
 class Team < ApplicationRecord
   resourcify
 
-  belongs_to :club
-  belongs_to :league
+  belongs_to :club, optional: true
+  belongs_to :league, optional: true
   has_many :players, dependent: :nullify
   has_many :matches, dependent: :destroy
+
+  validates :name, uniqueness: { scope: :club_id }
 end

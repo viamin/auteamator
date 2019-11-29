@@ -3,7 +3,7 @@
 class LeaguePolicy < ApplicationPolicy
   def permitted_attributes
     if admin?
-      %i[day description format gender_restriction level name relegation skill_level]
+      %i[day description format gender_restriction level name relegation skill_level url]
     else
       [:name]
     end

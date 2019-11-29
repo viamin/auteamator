@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_233321) do
+ActiveRecord::Schema.define(version: 2019_11_29_033938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2019_01_21_233321) do
     t.datetime "updated_at", null: false
     t.bigint "football_association_id"
     t.index ["football_association_id"], name: "index_clubs_on_football_association_id"
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.bigint "player_id"
+    t.bigint "club_id"
+    t.integer "status"
+    t.datetime "first_active"
+    t.datetime "last_active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_contracts_on_club_id"
+    t.index ["player_id"], name: "index_contracts_on_player_id"
   end
 
   create_table "fields", force: :cascade do |t|
@@ -38,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_233321) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
   end
 
   create_table "leagues", force: :cascade do |t|
@@ -53,6 +66,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_233321) do
     t.string "gender_restriction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
     t.index ["football_association_id"], name: "index_leagues_on_football_association_id"
   end
 
@@ -113,6 +127,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_233321) do
     t.bigint "league_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
     t.index ["league_id"], name: "index_seasons_on_league_id"
   end
 
@@ -122,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_233321) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url"
     t.index ["club_id"], name: "index_teams_on_club_id"
     t.index ["league_id"], name: "index_teams_on_league_id"
   end
@@ -146,6 +162,8 @@ ActiveRecord::Schema.define(version: 2019_01_21_233321) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "contracts", "clubs"
+  add_foreign_key "contracts", "players"
   add_foreign_key "fields", "locations"
   add_foreign_key "leagues", "football_associations"
   add_foreign_key "matches", "fields"

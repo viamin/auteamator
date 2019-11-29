@@ -14,6 +14,7 @@
 #  name                    :string
 #  relegation              :boolean
 #  skill_level             :string
+#  url                     :string
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  football_association_id :bigint(8)

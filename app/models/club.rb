@@ -19,6 +19,9 @@
 class Club < ApplicationRecord
   resourcify
 
+  validates :name, uniqueness: { scope: :football_association_id }
+
   belongs_to :football_association
   has_many :players, dependent: :nullify
+  has_many :teams, dependent: :nullify
 end

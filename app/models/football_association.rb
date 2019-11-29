@@ -6,6 +6,7 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  name       :string
+#  url        :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -20,4 +21,15 @@ class FootballAssociation < ApplicationRecord
   has_many :leagues, dependent: :nullify
   accepts_nested_attributes_for :clubs, allow_destroy: true
   accepts_nested_attributes_for :leagues, allow_destroy: true
+
+  validates :name, uniqueness: true
+
+  # imports leagues, seasons, teams, players, etc. found at the base URL for the FA
+  # picks a strategy based on the domain (and hopes one of a select group of
+  # domains is in use.)
+  def import_all!
+    # The recipe:
+    # download the root url and search for a matching strategy
+    # root_page = HTTParty.get(url)
+  end
 end

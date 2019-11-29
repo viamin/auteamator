@@ -1,4 +1,4 @@
-Layout/AlignHash:
+Layout/HashAlignment:
   Exclude:
     - lib/tasks/auto_annotate_models.rake
 Metrics/BlockLength:
@@ -23,13 +23,21 @@ Naming/FileName:
     - Gemfile
 Rails:
   Enabled: true
-Rails/TimeZone:
-  EnforcedStyle: strict
 Rails/Date:
   EnforcedStyle: strict
+Rails/FilePath:
+  EnforcedStyle: arguments
 Rails/HasAndBelongsToMany:
   Exclude:
     - app/models/role.rb
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - app/controllers/application_controller.rb
+Rails/RakeEnvironment:
+  Exclude:
+    - lib/tasks/auto_annotate_models.rake
+Rails/TimeZone:
+  EnforcedStyle: strict
 Style/BlockComments:
   Exclude:
     - spec/spec_helper.rb

@@ -11,5 +11,6 @@ html
   body
     = render partial: 'layouts/menu'
     section.section
-      = yield
+      .content
+        = yield
     = render partial: 'layouts/footer'
