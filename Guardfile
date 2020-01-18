@@ -84,7 +84,7 @@ end
 # zeus: false                          # enables zeus gem.
 # CLI: 'rails server'                  # customizes runner command. Omits all options except `pid_file`!
 
-guard :rails, CLI: 'puma -C config/puma.rb' do
+guard :rails, CLI: 'bundle exec puma -C config/puma.rb' do
   watch(%r{^(config|lib)/.*})
 end
 
