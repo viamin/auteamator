@@ -6,7 +6,7 @@ Metrics/BlockLength:
     - Guardfile
     - lib/tasks/*
     - spec/**/*
-Metrics/LineLength:
+Layout/LineLength:
   Max: 92
   Exclude:
     - Gemfile
