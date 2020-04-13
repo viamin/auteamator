@@ -14,12 +14,6 @@ guard 'fasterer' do
   watch(%r{^app/.*.rb})
 end
 
-guard :foreman, procfile: 'Procfile.dev' do
-  # watch(%r{^app/(controllers|models|helpers)/.+.rb$})
-  # watch(%r{^lib/.+.rb$})
-  # watch(%r{^config/*})
-end
-
 guard :rspec, cmd: 'bundle exec rspec' do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
@@ -83,10 +77,6 @@ end
 # zeus_plan: server                    # custom plan in zeus, only works with `zeus: true`.
 # zeus: false                          # enables zeus gem.
 # CLI: 'rails server'                  # customizes runner command. Omits all options except `pid_file`!
-
-guard :rails, CLI: 'bundle exec puma -C config/puma.rb' do
-  watch(%r{^(config|lib)/.*})
-end
 
 guard :bundler do
   require 'guard/bundler'
