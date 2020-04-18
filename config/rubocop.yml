@@ -17,6 +17,12 @@ Layout/LineLength:
     - config/initializers/*
     - config/routes.rb
     - spec/**/*
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+Metrics/MethodLength:
+  Enabled: false
 Naming/FileName:
   Exclude:
     - Guardfile
@@ -51,3 +57,9 @@ Style/Documentation:
     - app/models/application_record.rb
     - app/policies/*
     - config/**/*
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/LineLength
 class FootballAssociationsController < ApplicationController
   before_action :set_football_association, only: %i[show edit update destroy]
 
@@ -28,17 +27,23 @@ class FootballAssociationsController < ApplicationController
 
   # POST /football_associations
   # POST /football_associations.json
-  def create # rubocop:disable Metrics/MethodLength
+  def create
     @football_association = FootballAssociation.new(football_association_params)
     authorize @football_association
 
     respond_to do |format|
       if @football_association.save
-        format.html { redirect_to @football_association, notice: 'Football association was successfully created.' }
+        format.html do
+          redirect_to @football_association,
+                      notice: 'Football association was successfully created.'
+        end
         format.json { render :show, status: :created, location: @football_association }
       else
         format.html { render :new }
-        format.json { render json: @football_association.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @football_association.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -48,11 +53,17 @@ class FootballAssociationsController < ApplicationController
   def update
     respond_to do |format|
       if @football_association.update(football_association_params)
-        format.html { redirect_to @football_association, notice: 'Football association was successfully updated.' }
+        format.html do
+          redirect_to @football_association,
+                      notice: 'Football association was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @football_association }
       else
         format.html { render :edit }
-        format.json { render json: @football_association.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @football_association.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -62,7 +73,10 @@ class FootballAssociationsController < ApplicationController
   def destroy
     @football_association.destroy
     respond_to do |format|
-      format.html { redirect_to football_associations_url, notice: 'Football association was successfully destroyed.' }
+      format.html do
+        redirect_to football_associations_url,
+                    notice: 'Football association was successfully destroyed.'
+      end
       format.json { head :no_content }
     end
   end
@@ -77,7 +91,9 @@ class FootballAssociationsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def football_association_params
-    params.require(:football_association).permit(policy(FootballAssociation).permitted_attributes)
+    params
+      .require(:football_association)
+      .permit(policy(FootballAssociation)
+    .permitted_attributes)
   end
 end
-# rubocop:enable Metrics/LineLength
