@@ -19,5 +19,7 @@
 
 # A location for fields
 class Location < ApplicationRecord
+  include Named
+  
   has_many :fields, dependent: :destroy
 end

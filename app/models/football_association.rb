@@ -17,6 +17,8 @@
 # For example, if I play on teams in Sports4Good and also IPlayFor,
 # those are the associations
 class FootballAssociation < ApplicationRecord
+  include Named
+  
   has_many :clubs, dependent: :nullify
   has_many :leagues, dependent: :nullify
   accepts_nested_attributes_for :clubs, allow_destroy: true

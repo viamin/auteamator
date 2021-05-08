@@ -17,6 +17,7 @@
 
 # A Club is the player organization
 class Club < ApplicationRecord
+  include Named
   resourcify
 
   validates :name, uniqueness: { scope: :football_association_id }

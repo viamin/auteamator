@@ -23,6 +23,8 @@
 
 # Individual fields at each location - matches take place at fields
 class Field < ApplicationRecord
+  include Named
+  
   belongs_to :location, optional: false
   counter_culture :location
   has_many :matches, dependent: :nullify

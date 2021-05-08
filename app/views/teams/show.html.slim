@@ -5,11 +5,11 @@ p
   = @team.name
 p
   strong Club:
-  = @team.club
+  = @team.club.name
 p
   strong League:
-  = @team.league
+  = @team.league.name
 
 => link_to 'Edit', edit_team_path(@team)
 '|
-=< link_to 'Back', teams_path
+=< link_to 'Back', team_path

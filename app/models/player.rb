@@ -22,6 +22,8 @@
 # The Player model tracks the people who are in the clubs and on the teams
 # Just what you think. They play the sportball matches.
 class Player < ApplicationRecord
+  include Named
+  
   belongs_to :club, optional: true
 
   validates :first_name, presence: true

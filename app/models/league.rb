@@ -32,6 +32,8 @@
 # A league determines the level, age group, rulesets, etc. for the teams and
 # games that are a part of it
 class League < ApplicationRecord
+  include Named
+  
   belongs_to :football_association
   has_many :seasons, dependent: :destroy
 

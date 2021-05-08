@@ -25,6 +25,8 @@
 
 # A Team is both part of a league and a club
 class Team < ApplicationRecord
+  include Named
+  
   resourcify
 
   belongs_to :club, optional: true

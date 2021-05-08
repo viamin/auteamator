@@ -14,8 +14,8 @@ table
     - @teams.each do |team|
       tr
         td = team.name
-        td = team.club
-        td = team.league
+        td = team.club.name
+        td = team.league.name
         td = link_to 'Show', team
         td = link_to 'Edit', edit_team_path(team)
         td = link_to 'Destroy', team, data: { confirm: 'Are you sure?' }, method: :delete
