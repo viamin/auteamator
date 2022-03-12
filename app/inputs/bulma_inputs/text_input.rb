@@ -4,7 +4,7 @@ module BulmaInputs
   # ensure textareas have the 'textarea' class
   class TextInput < SimpleForm::Inputs::TextInput
     def input_html_classes
-      super.push('textarea')
+      super.push("textarea")
     end
   end
 end

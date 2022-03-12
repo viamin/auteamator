@@ -20,7 +20,7 @@
 
 FactoryBot.define do
   factory :season do
-    title { 'Spring' }
+    title { "Spring" }
     url { Faker::Internet.url }
     starts { Faker::Date.backward(60) }
     ends { Faker::Date.forward(60) }

@@ -1,21 +1,21 @@
 # frozen_string_literal: true
 
-directories(%w[app lib config spec].select { |d| Dir.exist?(d) ? d : UI.warning(format('Directory %<dir>s does not exist', dir: d)) })
+directories(%w[app lib config spec].select { |d| Dir.exist?(d) ? d : UI.warning(format("Directory %<dir>s does not exist", dir: d)) })
 ignore %r{^lib/templates/}
 
-guard 'brakeman', run_on_start: true do
+guard "brakeman", run_on_start: true do
   watch(%r{^app/.+.(erb|haml|rhtml|rb)$})
   watch(%r{^config/.+.rb$})
   watch(%r{^lib/.+.rb$})
-  watch('Gemfile')
+  watch("Gemfile")
 end
 
-guard 'fasterer' do
+guard "fasterer" do
   watch(%r{^app/.*.rb})
 end
 
-guard :rspec, cmd: 'bundle exec rspec' do
-  require 'guard/rspec/dsl'
+guard :rspec, cmd: "bundle exec rspec" do
+  require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
   # RSpec files
@@ -35,29 +35,29 @@ guard :rspec, cmd: 'bundle exec rspec' do
 
   watch(rails.controllers) do |controller|
     [
-      rspec.spec.call(format('routing/%<controller>s_routing', controller: controller[1])),
-      rspec.spec.call(format('controllers/%<controller>s_controller', controller: controller[1])),
-      rspec.spec.call(format('acceptance/%<controller>s', controller: controller[1]))
+      rspec.spec.call(format("routing/%<controller>s_routing", controller: controller[1])),
+      rspec.spec.call(format("controllers/%<controller>s_controller", controller: controller[1])),
+      rspec.spec.call(format("acceptance/%<controller>s", controller: controller[1]))
     ]
   end
 
   # Rails config changes
-  watch(rails.spec_helper)     { rspec.spec_dir }
-  watch(rails.routes)          { format('%<controller>s/routing', controller: rspec.spec_dir) }
-  watch(rails.app_controller)  { format('%<controller>s/controllers', controller: rspec.spec_dir) }
+  watch(rails.spec_helper) { rspec.spec_dir }
+  watch(rails.routes) { format("%<controller>s/routing", controller: rspec.spec_dir) }
+  watch(rails.app_controller) { format("%<controller>s/controllers", controller: rspec.spec_dir) }
 
   # Capybara features specs
-  watch(rails.view_dirs)     { |view| rspec.spec.call(format('features/%<view>s', view: view[1])) }
-  watch(rails.layouts)       { |layout| rspec.spec.call(format('features/%<layout>s', layout: layout[1])) }
+  watch(rails.view_dirs) { |view| rspec.spec.call(format("features/%<view>s", view: view[1])) }
+  watch(rails.layouts) { |layout| rspec.spec.call(format("features/%<layout>s", layout: layout[1])) }
 
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+).feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps.rb$}) do |model|
-    Dir[File.join(format('**/%<model>s.feature', model: model[1]))][0] || 'spec/acceptance'
+    Dir[File.join(format("**/%<model>s.feature", model: model[1]))][0] || "spec/acceptance"
   end
 end
 
-guard :rubocop, cli: ['--format', 'fuubar', '--display-cop-names', '--auto-correct'] do
+guard :rubocop, cli: ["--format", "fuubar", "--display-cop-names", "--auto-correct"] do
   watch(/.+.rb$/)
   watch(%r{(?:.+/)?.rubocop(?:_todo)?.yml$}) { |m| File.dirname(m[0]) }
 end
@@ -79,12 +79,12 @@ end
 # CLI: 'rails server'                  # customizes runner command. Omits all options except `pid_file`!
 
 guard :bundler do
-  require 'guard/bundler'
-  require 'guard/bundler/verify'
+  require "guard/bundler"
+  require "guard/bundler/verify"
   helper = Guard::Bundler::Verify.new
 
-  files = ['Gemfile']
-  files += Dir['*.gemspec'] if files.any? { |f| helper.uses_gemspec?(f) }
+  files = ["Gemfile"]
+  files += Dir["*.gemspec"] if files.any? { |f| helper.uses_gemspec?(f) }
 
   # Assume files are symlinked from somewhere
   files.each { |file| watch(helper.real_path(file)) }

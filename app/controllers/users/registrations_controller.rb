@@ -2,7 +2,7 @@
 
 # Disabling Pundit filters
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'devise'
+  layout "devise"
   skip_after_action :verify_authorized
   skip_after_action :verify_policy_scoped
   skip_before_action :authenticate_user!

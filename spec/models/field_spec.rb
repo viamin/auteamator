@@ -21,7 +21,7 @@
 #  fk_rails_...  (location_id => locations.id)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Field, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"

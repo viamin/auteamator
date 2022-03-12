@@ -27,7 +27,7 @@ FactoryBot.define do
   factory :team do
     association :club
     association :league
-    name { 'First Team' }
+    name { "First Team" }
     url { Faker::Internet.url }
   end
 end

@@ -28,6 +28,6 @@ class Season < ApplicationRecord
   private
 
   def ends_is_after_starts
-    errors.add(:ends, 'must be after starts') if ends && starts && ends < starts
+    errors.add(:ends, "must be after starts") if ends && starts && ends < starts
   end
 end

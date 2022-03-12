@@ -31,15 +31,15 @@
 FactoryBot.define do
   factory :league do
     association :football_association
-    name { 'MyString' }
+    name { "MyString" }
     level { 1 }
     relegation { false }
-    description { 'MyString' }
-    day { 'Sunday' }
+    description { "MyString" }
+    day { "Sunday" }
     format { %w[11v11 7v7].sample }
-    skill_level { 'Intermediate' }
-    age_restriction { 'None' }
-    gender_restriction { 'Mens' }
+    skill_level { "Intermediate" }
+    age_restriction { "None" }
+    gender_restriction { "Mens" }
     url { Faker::Internet.url }
   end
 end

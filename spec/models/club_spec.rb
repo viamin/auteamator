@@ -15,7 +15,7 @@
 #  index_clubs_on_football_association_id  (football_association_id)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Club, type: :model do
   it { is_expected.to validate_uniqueness_of(:name).scoped_to(:football_association_id) }

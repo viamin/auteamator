@@ -32,7 +32,7 @@
 FactoryBot.define do
   factory :match do
     kickoff { Faker::Time.forward(10) }
-    result { '' }
+    result { "" }
     association :field
     association :season
     association :home_team, factory: :team

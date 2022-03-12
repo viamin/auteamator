@@ -13,7 +13,7 @@
 
 FactoryBot.define do
   factory :football_association do
-    name { 'MyFA' }
+    name { "MyFA" }
     url { Faker::Internet.url }
   end
 end

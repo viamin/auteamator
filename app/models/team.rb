@@ -32,5 +32,5 @@ class Team < ApplicationRecord
   has_many :players, dependent: :nullify
   has_many :matches, dependent: :destroy
 
-  validates :name, uniqueness: { scope: :club_id }
+  validates :name, uniqueness: {scope: :club_id}
 end

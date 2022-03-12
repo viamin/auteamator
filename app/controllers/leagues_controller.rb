@@ -12,7 +12,8 @@ class LeaguesController < ApplicationController
 
   # GET /leagues/1
   # GET /leagues/1.json
-  def show; end
+  def show
+  end
 
   # GET /leagues/new
   def new
@@ -20,7 +21,8 @@ class LeaguesController < ApplicationController
   end
 
   # GET /leagues/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /leagues
   # POST /leagues.json
@@ -29,7 +31,7 @@ class LeaguesController < ApplicationController
 
     respond_to do |format|
       if @league.save
-        format.html { redirect_to @league, notice: 'League was successfully created.' }
+        format.html { redirect_to @league, notice: "League was successfully created." }
         format.json { render :show, status: :created, location: @league }
       else
         format.html { render :new }
@@ -43,7 +45,7 @@ class LeaguesController < ApplicationController
   def update
     respond_to do |format|
       if @league.update(league_params)
-        format.html { redirect_to @league, notice: 'League was successfully updated.' }
+        format.html { redirect_to @league, notice: "League was successfully updated." }
         format.json { render :show, status: :ok, location: @league }
       else
         format.html { render :edit }
@@ -59,7 +61,7 @@ class LeaguesController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to football_association_leagues_url(@football_association),
-                    notice: 'League was successfully destroyed.'
+          notice: "League was successfully destroyed."
       end
       format.json { head :no_content }
     end
