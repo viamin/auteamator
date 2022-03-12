@@ -26,7 +26,7 @@ FactoryBot.define do
     address { Faker::Address.street_address }
     city { Faker::Address.city }
     state { Faker::Address.state_abbr }
-    map { '' }
+    map { "" }
     name { Faker::RickAndMorty.location }
     all_weather { [true, false].sample }
     lights { [true, false].sample }

@@ -13,7 +13,8 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1
   # GET /clubs/1.json
-  def show; end
+  def show
+  end
 
   # GET /clubs/new
   def new
@@ -21,7 +22,8 @@ class ClubsController < ApplicationController
   end
 
   # GET /clubs/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /clubs
   # POST /clubs.json
@@ -30,7 +32,7 @@ class ClubsController < ApplicationController
 
     respond_to do |format|
       if @club.save
-        format.html { redirect_to @club, notice: 'Club was successfully created.' }
+        format.html { redirect_to @club, notice: "Club was successfully created." }
         format.json { render :show, status: :created, location: @club }
       else
         format.html { render :new }
@@ -44,7 +46,7 @@ class ClubsController < ApplicationController
   def update
     respond_to do |format|
       if @club.update(club_params)
-        format.html { redirect_to @club, notice: 'Club was successfully updated.' }
+        format.html { redirect_to @club, notice: "Club was successfully updated." }
         format.json { render :show, status: :ok, location: @club }
       else
         format.html { render :edit }
@@ -60,7 +62,7 @@ class ClubsController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to football_association_clubs_url(@football_association),
-                    notice: 'Club was successfully destroyed.'
+          notice: "Club was successfully destroyed."
       end
       format.json { head :no_content }
     end

@@ -23,7 +23,8 @@ class FootballAssociationsController < ApplicationController
   end
 
   # GET /football_associations/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /football_associations
   # POST /football_associations.json
@@ -35,14 +36,14 @@ class FootballAssociationsController < ApplicationController
       if @football_association.save
         format.html do
           redirect_to @football_association,
-                      notice: 'Football association was successfully created.'
+            notice: "Football association was successfully created."
         end
         format.json { render :show, status: :created, location: @football_association }
       else
         format.html { render :new }
         format.json do
           render json: @football_association.errors,
-                 status: :unprocessable_entity
+            status: :unprocessable_entity
         end
       end
     end
@@ -55,14 +56,14 @@ class FootballAssociationsController < ApplicationController
       if @football_association.update(football_association_params)
         format.html do
           redirect_to @football_association,
-                      notice: 'Football association was successfully updated.'
+            notice: "Football association was successfully updated."
         end
         format.json { render :show, status: :ok, location: @football_association }
       else
         format.html { render :edit }
         format.json do
           render json: @football_association.errors,
-                 status: :unprocessable_entity
+            status: :unprocessable_entity
         end
       end
     end
@@ -75,7 +76,7 @@ class FootballAssociationsController < ApplicationController
     respond_to do |format|
       format.html do
         redirect_to football_associations_url,
-                    notice: 'Football association was successfully destroyed.'
+          notice: "Football association was successfully destroyed."
       end
       format.json { head :no_content }
     end

@@ -23,7 +23,7 @@
 
 FactoryBot.define do
   factory :field do
-    name { '' }
+    name { "" }
     number { 1 }
     association :location
     description { Faker::Lorem.sentence }

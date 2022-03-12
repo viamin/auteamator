@@ -17,7 +17,7 @@
 #  index_roles_on_resource_type_and_resource_id           (resource_type,resource_id)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Role, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"

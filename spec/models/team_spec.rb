@@ -23,7 +23,7 @@
 #  fk_rails_...  (league_id => leagues.id)
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Team, type: :model do
   it { is_expected.to validate_uniqueness_of(:name).scoped_to(:club_id) }

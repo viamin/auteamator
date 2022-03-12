@@ -4,18 +4,18 @@ class FootballAssociationPolicy < ApplicationPolicy
   def permitted_attributes
     if admin?
       [:name,
-       :url,
-       clubs_attributes: [:name],
-       leagues_attributes: %i[
-         day
-         description
-         format
-         gender_restriction
-         level
-         name
-         relegation
-         skill_level
-       ]]
+        :url,
+        clubs_attributes: [:name],
+        leagues_attributes: %i[
+          day
+          description
+          format
+          gender_restriction
+          level
+          name
+          relegation
+          skill_level
+        ]]
     else
       []
     end

@@ -19,18 +19,18 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
   let(:user) { create(:user) }
   let(:admin_user) { create(:user, :as_admin) }
 
-  context 'when creating' do
-    it 'creates a normal user' do
+  context "when creating" do
+    it "creates a normal user" do
       expect(user.has_role?(:admin)).to be false
     end
 
-    it 'creates an admin' do
+    it "creates an admin" do
       expect(admin_user.has_role?(:admin)).to be true
     end
   end
